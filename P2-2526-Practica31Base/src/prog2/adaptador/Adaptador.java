@@ -144,8 +144,12 @@ public class Adaptador {
      * @param prestecPos
      * @throws BiblioException
      */
-    public void retornarPrestec(int prestecPos) throws BiblioException {
-        dades.retornarPrestec(prestecPos);
+    public void retornarPrestec(int prestecPos, boolean filtrat) throws BiblioException {
+        if(filtrat){
+            dades.recuperaPrestecsNoRetornats().get(prestecPos).retorna();
+        }else{
+            dades.recuperaPrestecs().get(prestecPos).retorna();
+        }
     }
 
 }
