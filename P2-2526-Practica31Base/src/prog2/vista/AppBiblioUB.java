@@ -60,8 +60,47 @@ public class AppBiblioUB extends JFrame {
                 frm.setVisible(true);
             }
         });
+        btnGuardar.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    JFileChooser fc = new JFileChooser();
+                    int result = fc.showSaveDialog(AppBiblioUB.this);
+                    if(result == JFileChooser.APPROVE_OPTION){
+                        try{
+                            adaptador.guardaDades(fc.getSelectedFile().getPath());
+                            JOptionPane.showMessageDialog(AppBiblioUB.this, "Dades guardades correctament");
+                        } catch(BiblioException ex){
+                            JOptionPane.showMessageDialog(AppBiblioUB.this, ex.getMessage());
+                        }
+                    }
+            }
+        });
+        btnCarregar.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fc = new JFileChooser();
+                int result = fc.showOpenDialog(AppBiblioUB.this);
+                if(result == JFileChooser.APPROVE_OPTION){
+                    try{
+                        adaptador.carregaDades(fc.getSelectedFile().getPath());
+                        JOptionPane.showMessageDialog(AppBiblioUB.this, "Dades carregades correctament");
+                    } catch(BiblioException ex){
+                        JOptionPane.showMessageDialog(AppBiblioUB.this, ex.getMessage());
+                    }
+                }
+            }
+        });
     }
-
 
     public static void main(String[] args){
         SwingUtilities.invokeLater(()->{
