@@ -19,7 +19,7 @@ public class Dades implements InDades, Serializable {
     }
 
     /**
-     * Afegeix exemplar. Llança excepció si l'id ja existeix
+     * Afegeix exemplar. Llança excepció si l'id ja existeixi
      *
      * @param id
      * @param titol
